@@ -1,5 +1,4 @@
 ﻿html, body {
-    height: 100%;
     width: 100%;
     font-family: Roboto, Helvetica, Arial, sans-serif
 }
@@ -64,11 +63,8 @@ ul {
 }
 
 footer {
-    display: grid;
     background-color: #006643;
     color: #fff;
-    grid-template-columns: 1% 98% 1%;
-    grid-template-rows: 5% 90% 5%;
 }
 
 #account-grid {

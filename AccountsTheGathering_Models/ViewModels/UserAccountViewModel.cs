@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace AccountsTheGathering_Models.ViewModels
 {
@@ -13,7 +14,7 @@ namespace AccountsTheGathering_Models.ViewModels
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public decimal AmountDue { get; set; }
-        public DateTimeOffset? PaymentDueDate { get; set; } // This needs to be made nullable for empty dates.
+        public DateTimeOffset? PaymentDueDate { get; set; } 
         public int AccountStatusId { get; set; } // This will be tied in with the enum.
     }
 }
