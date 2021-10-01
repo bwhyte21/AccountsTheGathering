@@ -24,16 +24,18 @@
                         <label>Email:</label>@user.Email
                     </li>
                     <li>
-                        <label>Phone Number:</label>@user.PhoneNumber
-
+                      <label>Phone Number:</label>
+                      @*Before: string interpolation w/ range indexer*@
+                      @*@string.Format("({0}) {1}-{2}", user.PhoneNumber.Substring(0,3), user.PhoneNumber.Substring(3,3), user.PhoneNumber.Substring(6, user.PhoneNumber.Length - 6))*@
+                      @*string interpolation w/ range indexer*@
+                      @($"({user.PhoneNumber[..3]}) {user.PhoneNumber.Substring(3, 3)}-{user.PhoneNumber.Substring(6, user.PhoneNumber.Length - 6)}")
                     </li>
                     <li>
                         <label>Amount Due:</label>@user.AmountDue.ToString("C")
                     </li>
                     <li>
-                        <label>Due Date:</label>@user.PaymentDueDate
+                        <label>Due Date:</label>@Html.FormatValue(user.PaymentDueDate, "{0:d}")
                     </li>
-                    <br/>
                 }
             </ul>
         </div>
@@ -51,16 +53,14 @@
                         <label>Email:</label>@user.Email
                     </li>
                     <li>
-                        <label>Phone Number:</label>@user.PhoneNumber
+                        <label>Phone Number:</label>@($"({user.PhoneNumber[..3]}) {user.PhoneNumber.Substring(3, 3)}-{user.PhoneNumber.Substring(6, user.PhoneNumber.Length - 6)}")
                     </li>
                     <li>
                         <label>Amount Due:</label>@user.AmountDue.ToString("C")
                     </li>
                     <li>
-                        <label>Due Date:</label> 
-                        @Html.FormatValue(user.PaymentDueDate,"{0:d}")
+                        <label>Due Date:</label> @Html.FormatValue(user.PaymentDueDate, "{0:d}")
                     </li>
-                    <br/>
                 }
             </ul>
         </div>
@@ -78,18 +78,17 @@
                         <label>Email:</label>@user.Email
                     </li>
                     <li>
-                        <label>Phone Number:</label>@user.PhoneNumber
+                        <label >Phone Number:</label>
+                        @($"({user.PhoneNumber[..3]}) {user.PhoneNumber.Substring(3, 3)}-{user.PhoneNumber.Substring(6, user.PhoneNumber.Length - 6)}")
                     </li>
                     <li>
                         <label>Amount Due:</label>@user.AmountDue.ToString("C")
                     </li>
                     <li>
-                      <label>Due Date:</label>@Html.FormatValue(user.PaymentDueDate, "{0:d}")
+                        <label>Due Date:</label>@Html.FormatValue(user.PaymentDueDate, "{0:d}")
                     </li>
-                    <br/>
                 }
             </ul>
         </div>
     </div>
-
 </section>

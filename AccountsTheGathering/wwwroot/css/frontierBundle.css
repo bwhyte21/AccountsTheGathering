@@ -117,14 +117,59 @@ footer {
     margin: 0 5px 0 0;
 }
 
+.account-data-list > li:last-child {
+    margin-bottom: 1rem;
+}
+
 .copy {
     place-self: end;
     grid-row-start: 2;
     grid-column-start: 2;
 }
-body {
+/* X-Small devices (iPhones, 375px and up) */
+@media (min-width: 375px) {
+    #account-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-column-gap: 10%;
+        grid-row-gap: 1%;
+    }
+
+    .active-account-column h3,
+    .overdue-account-column h3,
+    .inactive-account-column h3 {
+        text-align: center;
+    }
+
+    .footer {
+        width: 100%;
+    }
 }
 
+/* Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 576px) {
+    
+}
+
+/* Medium devices (tablets, 768px and up) */
+
+@media (min-width: 768px) {
+}
+
+/* Large devices (desktops, 992px and up) */
+
+@media (min-width: 992px) {
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+
+@media (min-width: 1200px) {
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+
+@media (min-width: 1400px) {
+}
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 

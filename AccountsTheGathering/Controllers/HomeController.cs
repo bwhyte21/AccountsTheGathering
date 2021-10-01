@@ -16,13 +16,13 @@ namespace AccountsTheGathering.Controllers
         private static readonly HttpClient _client = new HttpClient();
 
         /// <summary>
-        /// Account Status Enum - I'm going to assume that "0" means inactive, which is why I sorted the enums.
+        /// Account Status Enum
         /// </summary>
         public enum AccountStatuses
         {
-            Inactive = 0,
-            Active = 1,
-            Overdue = 2
+            Active,
+            Inactive,
+            Overdue
         }
 
         /// <summary>
