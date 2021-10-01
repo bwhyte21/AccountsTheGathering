@@ -31,7 +31,7 @@
                       @($"({user.PhoneNumber[..3]}) {user.PhoneNumber.Substring(3, 3)}-{user.PhoneNumber.Substring(6, user.PhoneNumber.Length - 6)}")
                     </li>
                     <li>
-                        <label>Amount Due:</label>@user.AmountDue.ToString("C")
+                      <label>Amount Due:</label>@user.AmountDue.ToString("C") USD
                     </li>
                     <li>
                         <label>Due Date:</label>@Html.FormatValue(user.PaymentDueDate, "{0:d}")
@@ -56,7 +56,7 @@
                         <label>Phone Number:</label>@($"({user.PhoneNumber[..3]}) {user.PhoneNumber.Substring(3, 3)}-{user.PhoneNumber.Substring(6, user.PhoneNumber.Length - 6)}")
                     </li>
                     <li>
-                        <label>Amount Due:</label>@user.AmountDue.ToString("C")
+                      <label>Amount Due:</label>@user.AmountDue.ToString("C") USD
                     </li>
                     <li>
                         <label>Due Date:</label> @Html.FormatValue(user.PaymentDueDate, "{0:d}")
@@ -82,7 +82,7 @@
                         @($"({user.PhoneNumber[..3]}) {user.PhoneNumber.Substring(3, 3)}-{user.PhoneNumber.Substring(6, user.PhoneNumber.Length - 6)}")
                     </li>
                     <li>
-                        <label>Amount Due:</label>@user.AmountDue.ToString("C")
+                        <label>Amount Due:</label>@user.AmountDue.ToString("C") USD
                     </li>
                     <li>
                         <label>Due Date:</label>@Html.FormatValue(user.PaymentDueDate, "{0:d}")
