@@ -1,6 +1,4 @@
-using System;
-
-namespace AccountsTheGathering.Models
+namespace AccountsTheGathering_Models.ViewModels
 {
   public class ErrorViewModel
   {
