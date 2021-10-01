@@ -13,7 +13,8 @@ namespace AccountsTheGathering.Controllers
     public class HomeController : Controller
     {
         // Http client
-        private static readonly HttpClient _client = new HttpClient();
+        private static readonly HttpClient Client = new HttpClient();
+        private const string FrontierGetAll = "https://frontiercodingtests.azurewebsites.net/api/accounts/getall";
 
         /// <summary>
         /// Account Status Enum
@@ -46,7 +47,7 @@ namespace AccountsTheGathering.Controllers
 
             #region Short Path
             // Use a stream instead of a string as the source.
-            var streamTask = _client.GetStreamAsync("https://frontiercodingtests.azurewebsites.net/api/accounts/getall");
+            var streamTask = Client.GetStreamAsync(FrontierGetAll);
             // Deserialize the json into objects for the razor page.
             var userAccounts = await JsonSerializer.DeserializeAsync<List<UserAccountViewModel>>(await streamTask);
             #endregion
