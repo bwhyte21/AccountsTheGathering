@@ -1,4 +1,4 @@
-# AccountsTheGathering
+# Accounts: The Gathering
 Business needs a view that displays user accounts by status.
 
 # Description
