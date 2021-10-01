@@ -117,8 +117,8 @@ footer {
     margin: 0 5px 0 0;
 }
 
-.account-data-list > li:last-child {
-    margin-bottom: 1rem;
+.account-data-list > li:nth-child(5n+0) { /*Make some space every... 5th element.. ba dum tss*/
+    margin-bottom: 2rem;
 }
 
 .copy {
@@ -141,14 +141,19 @@ footer {
     }
 
     .footer {
-        width: 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
     }
 }
 
 /* Small devices (landscape phones, 576px and up) */
 
 @media (min-width: 576px) {
-    
+    .active-account-column h3,
+    .overdue-account-column h3,
+    .inactive-account-column h3 {
+        text-align: start;
+    }
 }
 
 /* Medium devices (tablets, 768px and up) */

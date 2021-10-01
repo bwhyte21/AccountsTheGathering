@@ -13,14 +13,19 @@
     }
 
     .footer {
-        width: 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
     }
 }
 
 /* Small devices (landscape phones, 576px and up) */
 
 @media (min-width: 576px) {
-    
+    .active-account-column h3,
+    .overdue-account-column h3,
+    .inactive-account-column h3 {
+        text-align: start;
+    }
 }
 
 /* Medium devices (tablets, 768px and up) */
