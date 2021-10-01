@@ -1,4 +1,7 @@
-﻿@{
+﻿@using static AccountsTheGathering.Controllers.HomeController.AccountStatuses
+@using System.Globalization
+@model List<AccountsTheGathering_Models.ViewModels.UserAccountViewModel>
+@{
     ViewData["Title"] = "Coding Test";
 }
 
@@ -6,45 +9,85 @@
     <h2>Accounts</h2>
 </div>
 <section id="account-grid">
-    <section class="account-column" id="active-account-column">
-        <div class="account-container-title" id="active-account-container-title">
+    <div class="account-column active-account-column">
+        <div class="account-container-title active-account-container-title">
             <h3>Active</h3>
         </div>
-        <div id="active-account" class="account-container ">
+        <div class="account-container active-account">
             <ul class="account-data-list">
-                <li><label>Name:</label>{{LastName}}, {{FirstName}}</li>
-                <li><label>Email:</label>{{Email}}</li>
-                <li><label>Phone Number:</label>{{PhoneNumber}}</li>
-                <li><label>Amount Due:</label>{{AmountDue}}</li>
-                <li><label>Due Date:</label>{{DueDate}}</li>
+                @foreach (var user in Model.Where(user => user.AccountStatusId == (int)Active))
+                {
+                    <li>
+                        <label>Name:</label>@user.LastName, @user.FirstName
+                    </li>
+                    <li>
+                        <label>Email:</label>@user.Email
+                    </li>
+                    <li>
+                      <label>Phone Number:</label>
+                      @*Before: string interpolation w/ range indexer*@
+                      @*@string.Format("({0}) {1}-{2}", user.PhoneNumber.Substring(0,3), user.PhoneNumber.Substring(3,3), user.PhoneNumber.Substring(6, user.PhoneNumber.Length - 6))*@
+                      @*string interpolation w/ range indexer*@
+                      @($"({user.PhoneNumber[..3]}) {user.PhoneNumber.Substring(3, 3)}-{user.PhoneNumber.Substring(6, user.PhoneNumber.Length - 6)}")
+                    </li>
+                    <li>
+                      <label>Amount Due:</label>@user.AmountDue.ToString("C") USD
+                    </li>
+                    <li>
+                        <label>Due Date:</label>@Html.FormatValue(user.PaymentDueDate, "{0:d}")
+                    </li>
+                }
             </ul>
         </div>
-    </section>
-    <section class="account-column" id="overdue-account-column">
-        <div class="account-container-title" id="overdue-account-container-title">
+    </div>
+    <div class="account-column overdue-account-column">
+        <div class="account-container-title overdue-account-container-title">
             <h3>Overdue</h3>
         </div>
-        <div id="overdue-account" class="account-container ">
+        <div class="account-container overdue-account">
             <ul class="account-data-list">
-                <li><label>Name:</label>{{LastName}}, {{FirstName}}</li>
-                <li><label>Email:</label>{{Email}}</li>
-                <li><label>Phone Number:</label>{{PhoneNumber}}</li>
-                <li><label>Amount Due:</label>{{AmountDue}}</li>
-                <li><label>Due Date:</label>{{DueDate}}</li>
+                @foreach (var user in Model.Where(user => user.AccountStatusId == (int)Overdue))
+                {
+                    <li><label>Name:</label>@user.LastName, @user.FirstName</li>
+                    <li>
+                        <label>Email:</label>@user.Email
+                    </li>
+                    <li>
+                        <label>Phone Number:</label>@($"({user.PhoneNumber[..3]}) {user.PhoneNumber.Substring(3, 3)}-{user.PhoneNumber.Substring(6, user.PhoneNumber.Length - 6)}")
+                    </li>
+                    <li>
+                      <label>Amount Due:</label>@user.AmountDue.ToString("C") USD
+                    </li>
+                    <li>
+                        <label>Due Date:</label> @Html.FormatValue(user.PaymentDueDate, "{0:d}")
+                    </li>
+                }
             </ul>
         </div>
-    </section>
-    <div class="account-column" id="inactive-account-column">
-        <div class="account-container-title" id="inactive-account-container-title">
+    </div>
+    <div class="account-column inactive-account-column">
+        <div class="account-container-title inactive-account-container-title">
             <h3>Inactive</h3>
         </div>
-        <div id="inactive-account" class="account-container ">
+        <div class="account-container inactive-account">
             <ul class="account-data-list">
-                <li><label>Name:</label>{{LastName}}, {{FirstName}}</li>
-                <li><label>Email:</label>{{Email}}</li>
-                <li><label>Phone Number:</label>{{PhoneNumber}}</li>
-                <li><label>Amount Due:</label>{{AmountDue}}</li>
-                <li><label>Due Date:</label>{{DueDate}}</li>
+                @foreach (var user in Model.Where(user => user.AccountStatusId == (int)Inactive))
+                {
+                    <li><label>Name:</label>@user.LastName, @user.FirstName</li>
+                    <li>
+                        <label>Email:</label>@user.Email
+                    </li>
+                    <li>
+                        <label >Phone Number:</label>
+                        @($"({user.PhoneNumber[..3]}) {user.PhoneNumber.Substring(3, 3)}-{user.PhoneNumber.Substring(6, user.PhoneNumber.Length - 6)}")
+                    </li>
+                    <li>
+                        <label>Amount Due:</label>@user.AmountDue.ToString("C") USD
+                    </li>
+                    <li>
+                        <label>Due Date:</label>@Html.FormatValue(user.PaymentDueDate, "{0:d}")
+                    </li>
+                }
             </ul>
         </div>
     </div>

@@ -1,20 +1,57 @@
-﻿using AccountsTheGathering.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
+using AccountsTheGathering_Models.ViewModels;
 
 namespace AccountsTheGathering.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController() { }
+        // Http client
+        private static readonly HttpClient _client = new HttpClient();
 
-        public IActionResult Index()
+        /// <summary>
+        /// Account Status Enum
+        /// </summary>
+        public enum AccountStatuses
         {
-            return View();
+            Active,
+            Inactive,
+            Overdue
+        }
+
+        /// <summary>
+        /// The main goods of this page.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IActionResult> Index()
+        {
+            #region Long Path
+            // Prep a variable to return the user accounts to the view.
+            //List<UserAccountViewModel> userAccounts;
+
+            // Using this using to insure a successful open/close connection
+            //using (var httpClient = new HttpClient())
+            //{
+                //using var response = await httpClient.GetAsync("https://frontiercodingtests.azurewebsites.net/api/accounts/getall");
+                //var apiResponse = await response.Content.ReadAsStringAsync();
+                //userAccounts = JsonConvert.DeserializeObject<List<UserAccount>>(apiResponse);
+            //}
+            #endregion
+
+            #region Short Path
+            // Use a stream instead of a string as the source.
+            var streamTask = _client.GetStreamAsync("https://frontiercodingtests.azurewebsites.net/api/accounts/getall");
+            // Deserialize the json into objects for the razor page.
+            var userAccounts = await JsonSerializer.DeserializeAsync<List<UserAccountViewModel>>(await streamTask);
+            #endregion
+
+            return View(userAccounts);
         }
 
         /// <summary>

@@ -1,5 +1,4 @@
 ﻿html, body {
-    height: 100%;
     width: 100%;
     font-family: Roboto, Helvetica, Arial, sans-serif
 }
@@ -64,11 +63,8 @@ ul {
 }
 
 footer {
-    display: grid;
     background-color: #006643;
     color: #fff;
-    grid-template-columns: 1% 98% 1%;
-    grid-template-rows: 5% 90% 5%;
 }
 
 #account-grid {
@@ -119,6 +115,10 @@ footer {
 .account-data-list > li > label {
     font-weight: bold;
     margin: 0 5px 0 0;
+}
+
+.account-data-list > li:nth-child(5n+0) { /*Make some space every... 5th element.. ba dum tss*/
+    margin-bottom: 2rem;
 }
 
 .copy {
